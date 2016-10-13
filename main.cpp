@@ -1,25 +1,69 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
+#include <conio.h>
+#include <stdlib.h>
 
 using namespace std;
 
-void lvl1(){
-    int answer;
+int totalPoints = 0;
+
+void lvl2(){
+    int answer, goodAnswer = 50;
+    int pkt = 5;
     system("CLS");
-    cout << "POZIOM 1" << endl << endl;
+    cout << "POZIOM 2" << endl;
+    cout << "Ilosc punktow: " << totalPoints << endl;
+    cout << "Ilosc punktow ktore dostaniesz za rozwiazanie: " << pkt << endl;
+    cout << "__________________________________________________" << endl;
+
     cout << "Polecenie:" << endl;
-    cout << "Rozwiaz rownanie 2+2*2" << endl;
+    cout << "Rozwiaz rownanie 7-7/7+7*7-7" << endl << endl;
     cout << "Odpowiedz: ";
     cin >> answer;
     cin.sync();
     cin.clear();
-    while(answer != 6){
+    while(answer != goodAnswer){
         cout << "Bledna odpowiedz! Sproboj ponownie" << endl;
         cout << "Odpowiedz: ";
         cin >> answer;
     }
+    totalPoints += pkt;
     cout << "Dobra odpowiedz :D" << endl;
+    cout << "Aby przejsc do kolejnego poziumu wcisnij ENTER" << endl;
+    getche();
+}
+
+void lvl1(){
+    int answer, goodAnswer = 6;
+    int pkt = 5;
+    system("CLS");
+    cout << "POZIOM 1" << endl;
+    cout << "Ilosc punktow: " << totalPoints << endl;
+    cout << "Ilosc punktow ktore dostaniesz za rozwiazanie: " << pkt << endl;
+    cout << "__________________________________________________" << endl;
+
+    cout << "Polecenie:" << endl;
+    cout << "Rozwiaz rownanie 2+2*2" << endl << endl;
+    cout << "Odpowiedz: ";
+    cin >> answer;
+    cin.sync();
+    cin.clear();
+    while(answer != goodAnswer){
+        cout << "Bledna odpowiedz! Sproboj ponownie" << endl;
+        cout << "Odpowiedz: ";
+        cin >> answer;
+    }
+    totalPoints += pkt;
+    cout << "Dobra odpowiedz :D" << endl;
+    cout << "Aby przejsc do kolejnego poziumu wcisnij ENTER" << endl;
+    getche();
+    lvl2();
+}
+
+void zasady(){
+    system("CLS");
+    cout << "ZASADY GRY" << endl;
+    cout << "Gra polega na rozwiazywaniu zagadek \n za dobrze rozwiazana zagadke otrzymujesz okreslona liczbe punktow, \n je¿eli twoja odpowiedz jest bledna za poprawna odpowiedz otrzymasz 1 pkt mniej." << endl;
 }
 
 void load(){
@@ -46,6 +90,7 @@ int main()
 
     cout << "[1] Zacznij od poczatku" << endl;
     cout << "[2] Wczytaj ostatni zapis" << endl;
+    cout << "[3] Zasady gry" << endl;
     cout << "Wybor: ";
     cin >> choose;
 
@@ -55,6 +100,9 @@ int main()
                 break;
         case 2:
             load();
+                break;
+        case 3:
+            zasady();
                 break;
     }
     return 0;
